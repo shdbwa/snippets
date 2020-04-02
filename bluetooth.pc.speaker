@@ -1,0 +1,12 @@
+/etc/bluetooth/main.conf
+
+# This will show a nice 'speaker icon' on your phone/tablet
+# Sometimes bluez override this, you can disable it by starting bluetoothd with `-P hostname`
+Class = 0x000414
+
+# Make your PC always discoverable
+DiscoverableTimeout = 0
+
+# Make your pC always pairable
+PairableTimeout = 0
+

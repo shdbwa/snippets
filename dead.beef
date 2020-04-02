@@ -1,0 +1,16 @@
+#0XDEADBEEF
+###########
+
+#GROUP BY ALBUM ART
+###################
+$if($and(%album%,%album artist%,%tracknumber%),%album artist% - [%date% ]%album%[' [CD'%discnumber%']'],$directory(%path%,2) - %directoryname%)
+
+#GROUP BY PATH
+##############
+$directory(%path%,2) - %directoryname%
+                    
+#CUSTOM SHELL COMMAND   
+#####################
+deadbeef --nowplaying '%F' | xargs -0 cp -t ~/Desktop/Favourites/
+#################################################################
+https://github.com/DeaDBeeF-Player/deadbeef/wiki/Title-formatting

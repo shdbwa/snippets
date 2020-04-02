@@ -1,0 +1,11 @@
+# LIST ALL PROXY SETTINGS
+gsettings list-recursively  org.gnome.system.proxy
+
+# CONFIGURE SOCKS PROXY ADRESS TO BE LOCALHOST/127.0.0.1 
+gsettings set org.gnome.system.proxy.socks host '127.0.0.1.'
+
+# CONFIGURE SOCKS PROXY PORT TO BE 3129 
+gsettings set org.gnome.system.proxy.socks host '3129'
+
+# DISABLE PROXY SETTINGS 
+org.gnome.system.proxy.http enabled false

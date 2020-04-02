@@ -1,0 +1,25 @@
+# FFMPEG NORMALIZE ( https://github.com/slhck/ffmpeg-normalize )
+# NORMALIZE TWO WAV FILES AND WRITE THEM TO THE SPECIFIED OUTPUT FILES WITH UNCOMPRESSED PCM WAV AS AUDIO CODEC:
+ffmpeg-normalize file1.wav file2.wav -o file1-normalized.wav -o file2-normalized.wav
+ 
+# NORMALIZE A NUMBER OF VIDEOS IN THE CURRENT FOLDER AND WRITE THEM TO A FOLDER CALLED NORMALIZED, CONVERTING ALL AUDIO STREAMS TO AAC WITH 192 KBIT/S.
+ffmpeg-normalize *.mkv -c:a aac -b:a 192k
+ 
+# FOR WINDOWS, THE ABOVE WOULD BE WRITTEN AS A LOOP:
+for %%f in ("*.mkv") do ffmpeg-normalize "%%f" -c:a aac -b:a 192k
+ 
+# NORMALIZE AN MP3 FILE AND WRITE AN MP3 FILE (YOU HAVE TO EXPLICITLY SPECIFY THE ENCODER):
+ffmpeg-normalize input.mp3 -c:a libmp3lame -b:a 320k -o output.mp3
+ 
+# NORMALIZE MANY FILES, KEEPING PCM AUDIO, BUT CHOOSING A DIFFERENT CONTAINER:
+ffmpeg-normalize *.wav -c:a pcm_s16le -ext aif
+ 
+# INSTEAD OF EBU R128, ONE MIGHT JUST WANT TO USE SIMPLE PEAK NORMALIZATION TO 0 DB:
+ffmpeg-normalize test.wav --normalization-type peak --target-level 0 --output normalized.wav
+ffmpeg-normalize test.wav -nt peak -t 0 -o normalized.wav
+
+# YOU CAN (IF YOU REALLY NEED TO!) ALSO OVERWRITE YOUR INPUT FILE. WARNING, THIS WILL DESTROY DATA: 
+ffmpeg-normalize input.mp4 -o input.mp4 -f
+ 
+# IF YOU NEED SOME FANCY EXTRA OPTIONS, SUCH AS SETTING VBR FOR THE LIBFDK_AAC ENCODER, PASS THEM TO THE -E/--EXTRA-OPTIONS ARGUMENT:
+ffmpeg-normalize input.m4a -c:a libfdk_aac -e='-vbr 3' -o output.m4a

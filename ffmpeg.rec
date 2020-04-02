@@ -1,0 +1,18 @@
+# GET THE NAMES OF ALL THE SYSTEM RECORDING INTERFACES. SAMPLE OUTPUT GIVEN BELOW.
+$ pacmd list-sources|awk '/index:/ {print $0}; /name:/ {print $0}; /device\.description/ {print $0}'
+
+# GIVING THIS KIND OF OUTPUT :
+#             index: 0
+#             name: <alsa_output.monitor>
+#                 device.description = "Monitor of Built-in Audio Analog Stereo"
+#         
+#             index: 1
+#             name: <alsa_input>
+#                 device.description = "Built-in Audio Analog Stereo"
+
+# RECORDING AUDIO FROM MIC AND SPEAKERS SIMULTANIOUSLY (MKV NEEDED FOR MULTIPLE AUDIO STREAMS)
+ffmpeg -f pulse -i alsa_output.monitor -f pulse -i alsa_input -acodec libmp3lame -map 0:0 -map 1:0 outfile.mkv
+
+# RECORDING AUDIO FROM SPEAKERS (MP3 FITS)
+ ffmpeg -f pulse -i alsa_output.monitor  -acodec libmp3lame outfile.mp3
+

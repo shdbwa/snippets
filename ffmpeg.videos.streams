@@ -1,0 +1,24 @@
+# FFMPEG LIST ALL STREAMS IN A MEDIA FILE
+ffprobe input -show_entries format=nb_streams -v 0 -of compact=p=0:nk=1
+ffmpeg -i input 2>&1 | grep "Stream #" | wc -l
+
+# REMOVE A SPECIFIC AUDIO STREAM
+ffmpeg -i input -map 0 -map -0:a:2 -c copy output
+    -map 0 selects all streams from the input
+    -map -0:a:2 then deselects audio stream 3. 
+    The stream index starts counting from 0, 
+     so audio stream 10 would be 0:a:9
+
+# REMOVE ALL AUDIO STREAMS
+ffmpeg -i input -map 0 -map -0:a -c copy output
+
+    -map 0 selects all streams from the input.
+    -map -0:a then deselects all audio streams from the input.
+
+# REMOVE OTHER STREAM TYPES 
+
+    v - video, such as -map -0:v
+    a - audio, such as -map -0:a (as shown above)
+    s - subtitles, such as -map -0:s
+    d - data, such as -map -0:d
+

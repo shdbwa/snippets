@@ -1,0 +1,9 @@
+My recipe for service obliteration (be careful with the rm statements!)
+
+systemctl stop [servicename]
+systemctl disable [servicename]
+rm /etc/systemd/system/[servicename]
+rm /etc/systemd/system/[servicename] symlinks that might be related
+systemctl daemon-reload
+systemctl reset-failed
+
