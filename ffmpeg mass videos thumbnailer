@@ -1,2 +1,6 @@
 #!/bin/bash
-for i in $( ls ); do    echo $i; done
+#List files,expect videos only, avoid spaces
+for i in $( ls ); 
+#Generate a 640x360 pixels thumbnail for each file,with the same name in png format.
+do ffmpeg -i $i -vf  "thumbnail,scale=640:360" -frames:v 1 $i.png;
+done
