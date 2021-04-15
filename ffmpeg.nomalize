@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/bash
 # FFMPEG NORMALIZE ( https://github.com/slhck/ffmpeg-normalize )
 # NORMALIZE TWO WAV FILES AND WRITE THEM TO THE SPECIFIED OUTPUT FILES WITH UNCOMPRESSED PCM WAV AS AUDIO CODEC:
 ffmpeg-normalize file1.wav file2.wav -o file1-normalized.wav -o file2-normalized.wav
