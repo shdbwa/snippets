@@ -1,3 +1,4 @@
+#!/bin/bash
 # GET THE NAMES OF ALL THE SYSTEM RECORDING INTERFACES. SAMPLE OUTPUT GIVEN BELOW.
 $ pacmd list-sources|awk '/index:/ {print $0}; /name:/ {print $0}; /device\.description/ {print $0}'
 
