@@ -1,6 +1,19 @@
 #!/bin/bash
+# Only one stream A/V - BE CAREFULL - This keep only one stream AND DELETE OTHERS
 ffmpeg -i largefile.mp4 -t 00:50:00 -c copy smallfile1.mp4 \
 -ss 00:50:00 -c copy smallfile2.mp4
-
 # This will create smallfile1.mp4, ending at 50 minutes into the video of largefile.mp4, 
 # and smallfile2.mp4, starting at 50 minutes in and ending at the end of largefile.mp4.
+
+# Multi-streams A/V/SUB
+ffmpeg -i 'BIG_VIDEO_FILE_WITH_MUTLI_AUDIO.mkv' -t 00:51:00  -c copy -map 0 "SMALL_VIDEO_FILE_WITH_MULTI_AUDIO_part1.mkv" \
+-ss 00:50:00 -c copy -map 0 "SMALL_VIDEO_FILE_WITH_MULTI_AUDIO_part2.mkv"
+# This will create VIDEO_part1.mkv, ending at 50 minutes into the video of BIG_VIDEO_FILE_WITH_MUTLI_AUDIO.mkv, 
+# and VIDEO_part2.mkv, starting at 50 minutes in and ending at the end of BIG_VIDEO_FILE_WITH_MUTLI_AUDIO.mkv,
+# one minute is added to avoid loosing data
+# all streams should be kept during the process
+
+
+# STREAM-REMAPING
+https://trac.ffmpeg.org/wiki/Map
+
