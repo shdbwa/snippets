@@ -2,5 +2,5 @@
 ffmpeg -i largefile.mp4 -t 00:50:00 -c copy smallfile1.mp4 \
 -ss 00:50:00 -c copy smallfile2.mp4
 
-#This will create smallfile1.mp4, ending at 50 minutes into the video of largefile.mp4, 
-and smallfile2.mp4, starting at 50 minutes in and ending at the end of largefile.mp4.
+# This will create smallfile1.mp4, ending at 50 minutes into the video of largefile.mp4, 
+# and smallfile2.mp4, starting at 50 minutes in and ending at the end of largefile.mp4.
