@@ -2,3 +2,12 @@
 for i in $( ls ); do
    echo item: $i
 done
+///////////////
+#!/bin/bash
+for i in $( cat list ); do
+   youtube-dl $i
+done
+///////////////
+# Rewrite using xargs
+# parallel work 
+# multithread
