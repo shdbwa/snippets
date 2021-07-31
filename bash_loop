@@ -11,6 +11,12 @@ for i in $( cat list ); do
 done
 
 ///////////////
+#Trouver(find) dans le repertoire en cours(./) tous les fichier png(-name "*.png"), 
+#puis(-exec) extraire leur palette(palette) de couleur sans limite(-t 0) recursivement ({}) et terminer le exec (\;)
+#!/bin/bash
+find ./ -name "*.png" -exec palette -t 0 {} \;
+
+///////////////
 
 # Rewrite using xargs
 # parallel work 
