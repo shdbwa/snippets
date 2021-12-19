@@ -1,11 +1,11 @@
 #!/bin/bash
+
+///////////////
 for i in $( ls ); do
    echo item: $i
 done
 
 ///////////////
-
-#!/bin/bash
 for i in $( cat list ); do
    youtube-dl $i
 done
@@ -13,17 +13,22 @@ done
 ///////////////
 #Trouver(find) dans le repertoire en cours(./) tous les fichier png(-name "*.png"), 
 #puis(-exec) extraire leur palette(palette) de couleur sans limite(-t 0) recursivement ({}) et terminer le exec (\;)
-#!/bin/bash
+/////////////////
 find ./ -name "*.png" -exec palette -t 0 {} \;
 
+
+///////////////
+mass rename
 ///////////////
 for var in `find . -type f -name "*(1).m4a"`; do
     new=`echo $var | cut -d'(' -f1`;
     mv $var $new.m4a;
 done
+
+
 ///////////////////
 #Remove .1 at end of filename = modify extension 
-#!/bin/env bash
+///////////////////
 for var in `find . -type f -name "*.1"`; do
     new=`echo $var | sed 's/.1//'`;
     mv $var $new;
