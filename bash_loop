@@ -17,6 +17,17 @@ done
 find ./ -name "*.png" -exec palette -t 0 {} \;
 
 ///////////////
+for var in `find . -type f -name "*(1).m4a"`; do
+    new=`echo $var | cut -d'(' -f1`;
+    mv $var $new.m4a;
+done
+///////////////////
+#Remove .1 at end of filename = modify extension 
+#!/bin/env bash
+for var in `find . -type f -name "*.1"`; do
+    new=`echo $var | sed 's/.1//'`;
+    mv $var $new;
+done
 
 # Rewrite using xargs
 # parallel work 
