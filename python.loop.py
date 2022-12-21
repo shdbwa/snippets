@@ -32,3 +32,15 @@ for x in range(6):
   print(x)
 else:
   print("Finally finished!")  
+
+  
+# Parallel
+# create a process pool that uses all cpus
+with multiprocessing.Pool() as pool:
+	# prepare arguments for reach call to target function
+	items = [(1,2), (3,4), (5,6)]
+	# call the function for each item in parallel with multiple arguments
+	for result in pool.starmap(task, items):
+		print(result)
+    
+    
