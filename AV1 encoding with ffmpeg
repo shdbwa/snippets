@@ -1,0 +1,1 @@
+ffmpeg -i infile.mp4 -map 0:v:0 -pix_fmt yuv420p10le -f yuv4mpegpipe -strict -1  - | SvtAv1EncApp -i stdin --preset 6 --keyint 240 --input-depth 10 --crf 30 --rc 0 --passes 1 --film-grain 0 -b infile.ivf
