@@ -1,3 +1,9 @@
+///////////////////
+ls -1 | parallel convert -normalize -auto-gamma -auto-level {} {}.jpg \; 
+///////////////////
+
+
+
 #!/bin/bash
 
 #split at new line instead of space 
@@ -36,7 +42,5 @@ for var in `find . -type f -name "*.1"`; do
     new=`echo $var | sed 's/.1//'`;
     mv $var $new;
 done
-
-# Rewrite using xargs
-# parallel work 
-# multithread
+///////////////////
+ls -1 | parallel convert -normalize -auto-gamma -auto-level {} {}.jpg \; 
